@@ -9,57 +9,48 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "@fontsource/caveat";
+import FlipCard from "./flipcard/FlipCard"
+import FlipCardFront from "./flipcard/FlipCardFront"
+import FlipCardBack from "./flipcard/FlipCardBack"
 
 const Results= ( props ) => {
     if ( props.ActorName !== undefined ) {
         return (
         <Stack
         p="0"
+        mt="5"
         borderWidth="0"
         direction="column"
-        align="flex-start"
-        >
-            <Box
-                className="flip-card"
-                mt="5"
-                width="300px"
-                height="500px"
-                >
-                <Box
-                    className="flip-card-inner"    
-                    borderWidth="3px"
-                    borderRadius="md"
-                    >
-                    <Box
-                        className="flip-card-front"
-                        bg="repeating-linear-gradient(50deg, #444, transparent, #444 500px)">
-                        <VStack px="4">
-                            <Heading as="h2" my="2" size="lg">
-                                { props.ActorName }
-                            </Heading>
-                            <Image src={ props.ActorImage } alt={ props.ActorName } width="250px" />
-                        </VStack>
-                    </Box>
-                    <Box
-                        className="flip-card-back"
-                        bg="radial-gradient(#000, rgb(71 9 9 / 50%))"
-                        >
-                        <VStack px="4">
-                            <Heading as="h3" size="md" mt="5">Known for</Heading>
-                            { props.KnownFor.map((mov, i) => {
-                                return (
-                                <Tag key={ i } p="2" width="100%">
-                                    <HStack>
-                                        <Image boxSize="50px" objectFit="cover" src={ mov.poster } alt={ mov.name } />
-                                        <p align="left"><i>{ mov.name }</i></p>
-                                    </HStack>
-                                </Tag>
-                                )
-                            }) }
-                        </VStack>
-                    </Box>
-                </Box>
-            </Box>
+        align="flex-start">
+            <FlipCard>
+                <FlipCardFront>
+                    <VStack px="4">
+                        <Heading as="h2" my="2" size="lg">
+                            { props.ActorName }
+                        </Heading>
+                        <Image src={ props.ActorImage } alt={ props.ActorName } width="250px" />
+                    </VStack>
+                </FlipCardFront>
+                <FlipCardBack>
+                    <VStack px="4">
+                        <Heading as="h3" size="md" mt="-6">Known for</Heading>
+                        { props.KnownFor.map((mov, i) => {
+                            return (
+                            <Tag key={ i } p="2" width="100%">
+                                <HStack>
+                                    <Image boxSize="50px" objectFit="cover" src={ mov.poster } alt={ mov.name } />
+                                    <p align="left"><i>{ mov.name }</i></p>
+                                </HStack>
+                            </Tag>
+                            )
+                        }) }
+                    </VStack>
+                </FlipCardBack>
+            </FlipCard>
+            {/* <FlipCard height="150px" width="150px">
+                <FlipCardFront bg="blue.900">Hello</FlipCardFront>
+                <FlipCardBack bg="red.900">Good-Bye</FlipCardBack>
+            </FlipCard> */}
         </Stack>
         );
     } else {
