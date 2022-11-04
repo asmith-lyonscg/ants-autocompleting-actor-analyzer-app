@@ -1,5 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
+import "./flipcard.css";
 
 export const FlipCard = ( props ) => {
     if ( props.children !== undefined ) {
