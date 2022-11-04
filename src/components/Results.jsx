@@ -9,9 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "@fontsource/caveat";
-import FlipCard from "./flipcard/FlipCard"
-import FlipCardFront from "./flipcard/FlipCardFront"
-import FlipCardBack from "./flipcard/FlipCardBack"
+import { FlipCard, FlipCardFront, FlipCardBack } from "./flipcard/FlipCard"
 
 const Results= ( props ) => {
     if ( props.ActorName !== undefined ) {

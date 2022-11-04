@@ -1,7 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 
-const FlipCard = ( props ) => {
+export const FlipCard = ( props ) => {
     if ( props.children !== undefined ) {
 
         const width = props.width || "300px",
@@ -27,4 +27,38 @@ const FlipCard = ( props ) => {
     }
 }
 
-export default FlipCard
+export const FlipCardFront = ( props ) => {
+    if ( props.children !== undefined ) {
+        const bg = props.bg || "repeating-linear-gradient(50deg, #444, transparent, #444 500px)"
+        const align = props.align || "center"
+        const justify = props.justify || "center"
+        return (
+            <Flex
+                className="flip-card-front"
+                bg={ bg }
+                align={ align }
+                justify={ justify }
+                { ...props }>
+                { props.children }
+            </Flex>
+        )
+    }
+}
+
+export const FlipCardBack = ( props ) => {
+    if ( props.children !== undefined ) {
+        const bg = props.bg || "radial-gradient(#000, rgb(71 9 9 / 50%))"
+        const align = props.align || "center"
+        const justify = props.justify || "center"
+        return (
+            <Flex
+                className="flip-card-back"
+                bg={ bg }
+                align={ align }
+                justify={ justify }
+                { ...props }>
+                { props.children }
+            </Flex>
+        )
+    }
+}

@@ -1,10 +1,8 @@
 
 import React from "react";
-import FlipCard from "./flipcard/FlipCard"
-import FlipCardFront from "./flipcard/FlipCardFront"
-import FlipCardBack from "./flipcard/FlipCardBack"
+import { FlipCard, FlipCardFront, FlipCardBack } from "./FlipCard"
 
-export default function FlipCardExample() {
+const FlipCardExample = () => {
     return (
         <FlipCard height="150px" width="150px">
             <FlipCardFront bg="blue.900">Hello</FlipCardFront>
@@ -12,3 +10,5 @@ export default function FlipCardExample() {
         </FlipCard>
     )
 }
+
+export default FlipCardExample
