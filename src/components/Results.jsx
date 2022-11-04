@@ -47,10 +47,6 @@ const Results= ( props ) => {
                     </VStack>
                 </FlipCardBack>
             </FlipCard>
-            {/* <FlipCard height="150px" width="150px">
-                <FlipCardFront bg="blue.900">Hello</FlipCardFront>
-                <FlipCardBack bg="red.900">Good-Bye</FlipCardBack>
-            </FlipCard> */}
         </Stack>
         );
     } else {
