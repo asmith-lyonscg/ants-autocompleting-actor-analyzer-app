@@ -29,9 +29,9 @@ const Results= ( props ) => {
                         <Image src={ props.ActorImage } alt={ props.ActorName } width="250px" />
                     </VStack>
                 </FlipCardFront>
-                <FlipCardBack>
-                    <VStack px="4">
-                        <Heading as="h3" size="md" mt="-6">Known for</Heading>
+                <FlipCardBack align="start">
+                    <VStack p="4">
+                        <Heading as="h3" size="md" mt="4">Known for</Heading>
                         { props.KnownFor.map((mov, i) => {
                             return (
                             <Tag key={ i } p="2" width="100%">

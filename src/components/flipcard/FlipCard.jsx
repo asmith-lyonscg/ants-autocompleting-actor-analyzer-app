@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import "./flipcard.css";
 
-const FlipCard = ( props ) => {
+export const FlipCard = ( props ) => {
     if ( props.children !== undefined ) {
 
         const width = props.width || "300px",
@@ -63,5 +63,3 @@ export const FlipCardBack = ( props ) => {
         )
     }
 }
-
-export default FlipCard
