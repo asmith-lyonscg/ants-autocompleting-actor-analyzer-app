@@ -12,7 +12,7 @@ import SuggestionMenu from "./SuggestionMenu";
 const minCharactersToQuery = 3;
 const maximumSuggestionsToShow = 7;
 
-export default function Builder() {
+const Builder = () => {
    const toast = useToast();
    const [lastApiResponse, setLastApiResponse] = useState([]);
    const [suggestions, setSuggestions] = useState([]);
@@ -115,3 +115,5 @@ export default function Builder() {
       </Box>
    );
 }
+
+export default Builder
