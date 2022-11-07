@@ -1,13 +1,8 @@
-import {
-   Box,
-   Button,
-   HStack,
-   useToast,
-} from "@chakra-ui/react";
+import { Box, Button, HStack, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { MovieDB as moviedb, getActorSearchSuggestions, getActorByID, getTopActorObject, getActorName, getActorImage, getMovieName, getMovieImage, getMoviesKnownFor } from '../api/TMDB';
 import Results from "./Results";
-import SuggestionMenu from "./SuggestionMenu";
+import Autocomplete from "./autocomplete/Autocomplete";
 
 const minCharactersToQuery = 3;
 const maximumSuggestionsToShow = 7;
@@ -52,7 +47,7 @@ const Builder = () => {
    const submitSearch = (query) => {
       moviedb.searchPerson(query)
          .then((response) => {
-            console.log("API CALLED")
+            // console.log("API CALLED")
             setLastApiResponse(response)
             const topActor = getTopActorObject(response)
             displayActor(topActor)
@@ -89,12 +84,14 @@ const Builder = () => {
             submitSearch(actorQuery)
             } }>
             <HStack justifyContent="center">
-               <SuggestionMenu
+               <Autocomplete
                   listItems={ suggestions }
                   minCharacters={ minCharactersToQuery }
                   maxSuggestions={ maximumSuggestionsToShow }
-                  setInputQuery={ (val) => { onSearchInputChange(val) } }
-                  submitFunc={ selectSuggestedActor }
+                  onInputChangeCallback={ (val) => { onSearchInputChange(val) } }
+                  onSelectCallback={ selectSuggestedActor }
+                  menu_boxShadow="dark-lg"
+                  button_fontSize="15px"
                />
                <Button borderRadius="md"
                   bg="cyan.600"

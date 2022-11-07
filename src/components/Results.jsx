@@ -1,12 +1,4 @@
-import {
-    Box,
-    Heading,
-    HStack,
-    Image,
-    Stack,
-    Tag,
-    VStack,
-} from "@chakra-ui/react";
+import { Box, Heading, HStack, Image, Stack, Tag, VStack } from "@chakra-ui/react";
 import React from "react";
 import "@fontsource/caveat";
 import { FlipCard, FlipCardFront, FlipCardBack } from "./flipcard/FlipCard"
