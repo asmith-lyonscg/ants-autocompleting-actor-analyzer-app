@@ -33,7 +33,9 @@ const AutocompleteExample = () => {
          onInputChangeCallback={ (q) => { onSearchInputChange(q) } }
          onSelectCallback={ onSuggestionSelected }
          menu_boxShadow="dark-lg"
+         menu_borderWidth="1px"
          button_fontSize="16px"
+         button_px={ 2 }
       />
    );
 }

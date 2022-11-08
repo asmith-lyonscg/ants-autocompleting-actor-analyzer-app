@@ -19,7 +19,7 @@ export const getActorSearchSuggestions = (response) => {
       actors.forEach((actor) => {
          if (actor.hasOwnProperty("name")) {
             suggestions.push({
-               aid: actor.id,
+               id: actor.id,
                name: actor.name,
                image: tmdbImagePathBase + "w200" + actor.profile_path
             })

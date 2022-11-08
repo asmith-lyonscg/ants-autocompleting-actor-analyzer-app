@@ -1,31 +1,6 @@
 import { React, useState, useRef } from 'react';
 import { Avatar, Input, Button, Box, VStack, InputGroup } from "@chakra-ui/react";
-
-// Core props are:
-//
-//    listItems (required)
-//       an array of objects to list in the suggestion dropdown. each object must follow the format of:
-//       {
-//          aid: a unique ID
-//          image: (optional) an img src to display as a thumbnail
-//          name: the display text
-//       }
-//
-//    onInputChangeCallback (required)
-//       a callback function that is hit every time the input field value changes
-//
-//    onSelectCallback (required)
-//       a callback function called when a suggestion item is selected with enter or click
-//
-//    minCharacters
-//       the number of characters that must be present in the input field before the menu visibility is triggered. default is 3.
-//
-//    maxSuggestions
-//       a hard cap on the number of suggestion items to visually render in the dropdown. default is 8.
-//
-//    showAvatar
-//       set to { false } to turn avatar (thumbnail images) off.  default is true.
-//
+import PropTypes from 'prop-types';
 
 const Autocomplete = ( props ) => {
 
@@ -167,8 +142,8 @@ const Autocomplete = ( props ) => {
                   items.map((listItem, i) => {
                      return (
                         <Button
-                           key={ listItem.aid }
-                           value={ listItem.aid }
+                           key={ listItem.id }
+                           value={ listItem.id }
                            variant={ button_variant }
                            width={ button_width }
                            justifyContent={ button_justifyContent }
@@ -215,4 +190,52 @@ function propNameSpace(namespace, props) {
          });
       }, {});
    return nameSpacedProps
+}
+
+
+Autocomplete.displayName = 'Autocomplete'
+
+Autocomplete.propTypes = {
+   /**
+    * Array of items to show in the suggestion dropdown. Each item object must follow the format of: {id: 'a unique ID', image: '(optional) an img src to display as a thumbnail', name: 'the display text' }
+    */
+   listItems: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      image: PropTypes.string
+   })).isRequired,
+   /**
+    * Callback function that is hit every time the input field value changes
+    */
+   onInputChangeCallback: PropTypes.func.isRequired,
+   /**
+    * Callback function called when a suggestion item is selected with enter or click
+    */
+   onSelectCallback: PropTypes.element.isRequired,
+   /**
+    * Number of characters that must be present in the input field before the menu visibility is triggered. default is 3.
+    */
+   minCharacters: PropTypes.number,
+   /**
+    * Hard cap on the number of suggestion items to visually render in the dropdown. default is 8.
+    */
+   maxSuggestions: PropTypes.number,
+   /**
+    * Set to { false } to turn avatars (thumbnail images) off.  default is true.
+    */
+   showAvatar: PropTypes.bool,
+   /**
+    * Optional node to render inside the <InputGroup> wrapper, before the <Input> field node
+    */
+   inputLeft: PropTypes.node,
+   /**
+    * Optional node to render inside the <InputGroup> wrapper, after the <Input> field node
+    */
+   inputRight: PropTypes.node,
+}
+
+Autocomplete.defaultProps = {
+   minCharacters: 3,
+   maxSuggestions: 8,
+   showAvatar: true
 }
