@@ -1,5 +1,5 @@
 import { React, useState, useRef } from 'react';
-import { Avatar, Input, Button, Box, VStack } from "@chakra-ui/react";
+import { Avatar, Input, Button, Box, VStack, InputGroup } from "@chakra-ui/react";
 
 // Core props are:
 //
@@ -36,6 +36,8 @@ const Autocomplete = ( props ) => {
    const minCharacters = props.minCharacters || 3;
    const maxSuggestions = props.maxSuggestions || 8;
    const showAvatar = typeof props.showAvatar !== "undefined" ? props.showAvatar : true
+   const inputLeft = props.inputLeft || null;
+   const inputRight = props.inputRight || null;
 
    const menuProps = propNameSpace("menu", props) // ex: menu_borderColor="gray.200"
    const buttonProps = propNameSpace("button", props)
@@ -136,18 +138,21 @@ const Autocomplete = ( props ) => {
 
    return (
       <Box pos="relative">
-         <Input
-            ref={inputRef}
-            id={ id }
-            type={ type }
-            placeholder={ placeholder }
-            value={ query }
-            onChange={ onChange }
-            onKeyDown={ onKeyDown }
-            onBlur={ onBlur }
-            autoComplete={ autoComplete }
-            { ...props }/>
-
+         <InputGroup>
+            { inputLeft }
+            <Input
+               ref={inputRef}
+               id={ id }
+               type={ type }
+               placeholder={ placeholder }
+               value={ query }
+               onChange={ onChange }
+               onKeyDown={ onKeyDown }
+               onBlur={ onBlur }
+               autoComplete={ autoComplete }
+               { ...props }/>
+            { inputRight }
+         </InputGroup>
          <Box
             display={ menu_display }
             pos={ menu_pos }

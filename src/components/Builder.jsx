@@ -1,4 +1,5 @@
-import { Box, Button, HStack, useToast } from "@chakra-ui/react";
+import { Box, Button, HStack, InputLeftElement, useToast } from "@chakra-ui/react";
+import { SearchIcon } from '@chakra-ui/icons'
 import React, { useState } from "react";
 import { MovieDB as moviedb, getActorSearchSuggestions, getActorByID, getTopActorObject, getActorName, getActorImage, getMovieName, getMovieImage, getMoviesKnownFor } from '../api/TMDB';
 import Results from "./Results";
@@ -90,6 +91,12 @@ const Builder = () => {
                   maxSuggestions={ maximumSuggestionsToShow }
                   onInputChangeCallback={ (val) => { onSearchInputChange(val) } }
                   onSelectCallback={ selectSuggestedActor }
+                  inputLeft={
+                     <InputLeftElement
+                        pointerEvents='none'
+                        children={<SearchIcon color='gray.500' />}
+                     />
+                  }
                   menu_boxShadow="dark-lg"
                   button_fontSize="15px"
                />
