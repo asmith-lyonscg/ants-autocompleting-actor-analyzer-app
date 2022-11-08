@@ -128,8 +128,8 @@ const Autocomplete = ( props ) => {
          button__focus = props.button__focus || { bg: "gray.700", outline: "none"  },
          button_onKeyDown = props.button_onKeyDown || menuKeyDownCallback,
          button_onClick = props.button_onClick || menuSelectionCallback,
-         avatarSize = props.avatarSize || "sm",
-         avatarMr = props.avatarMr || "3"
+         avatar_size = props.avatar_size || "sm",
+         avatar_mr = props.avatar_mr || "3"
 
    let items = props.listItems
    items.length = Math.min(items.length, maxSuggestions)
@@ -177,8 +177,8 @@ const Autocomplete = ( props ) => {
 
                            { showAvatar && (
                               <Avatar
-                                 size={ avatarSize }
-                                 mr={ avatarMr }
+                                 size={ avatar_size }
+                                 mr={ avatar_mr }
                                  name={listItem.name}
                                  src={listItem.image}
                                  {...avatarProps} />
